@@ -1,3 +1,5 @@
+import logging
+
 from spotify2tidal.spotify import Spotify
 from spotify2tidal.tidal import Tidal
 
@@ -59,6 +61,22 @@ class Spotify2Tidal:
             spotify_discover_weekly_id,
         )
         self.tidal = Tidal(tidal_username, tidal_password)
+
+    def copy_elected_spotify_playlists(self):
+        """Ask for every spotify playlist whether to copy it or not."""
+        for playlist in self.spotify.own_playlists:
+            answer = input("Copy playlist {} (y)/(n)? ".format(playlist["name"]))
+            if answer != "y" and answer != "n":
+                print("Invalid answer - should be y or n")
+                answer = input("Copy playlist {} (y)/(n)? ".format(playlist["name"]))
+            if answer == "n":
+                continue
+            self._add_spotify_playlist_to_tidal(
+                spotify_playlist=playlist, delete_existing=True
+            )
+            logging.getLogger(__name__).debug(
+                "---------"
+            )
 
     def copy_all_spotify_playlists(self):
         """Create all your spotify playlists in tidal."""
