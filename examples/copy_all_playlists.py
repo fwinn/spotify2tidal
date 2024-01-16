@@ -26,4 +26,4 @@ if __name__ == "__main__":
         config.spotify_client_redirect_uri,
     )
 
-    st.ask_for_copy_spotify_playlists()
+    st.copy_elected_spotify_playlists()
