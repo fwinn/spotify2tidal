@@ -137,7 +137,7 @@ class Tidal:
         if delete_existing is True:
             self.delete_existing_playlist(playlist_name)
 
-        playlist = self.tidal_session.user.create_playlist(playlist_name, "Created by spotify2tidal")
+        playlist = self.tidal_session.user.create_playlist(playlist_name, "")
 
         logging.getLogger(__name__).debug(
             "Created playlist: %s", playlist_name
