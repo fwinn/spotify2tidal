@@ -45,8 +45,6 @@ class Spotify2Tidal:
     """
     def __init__(
         self,
-        tidal_username,
-        tidal_password,
         spotify_username,
         spotify_client_id,
         spotify_client_secret,
@@ -60,7 +58,7 @@ class Spotify2Tidal:
             spotify_redirect_uri,
             spotify_discover_weekly_id,
         )
-        self.tidal = Tidal(tidal_username, tidal_password)
+        self.tidal = Tidal()
 
     def copy_elected_spotify_playlists(self):
         """Ask for every spotify playlist whether to copy it or not."""
