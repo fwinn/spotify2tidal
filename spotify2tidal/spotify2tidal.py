@@ -145,9 +145,12 @@ class Spotify2Tidal:
         )
 
         for track in spotify_tracks:
-            artist = track["track"]["artists"][0]["name"]
-            # album = track["track"]["album"]["name"]
-            name = track["track"]["name"]
+            if track["track"] != None:
+                artist = track["track"]["artists"][0]["name"]
+                # album = track["track"]["album"]["name"]
+                name = track["track"]["name"]
+            else:
+                logging.warning(track)
             self.tidal.add_track_to_playlist(
                 tidal_playlist_id, artist=artist, name=name
             )
