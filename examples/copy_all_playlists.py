@@ -14,7 +14,7 @@ if __name__ == "__main__":
     configuration file 'config.py'.
     """
     # Enable logging to see what is going on
-    logging.getLogger("spotify2tidal").addHandler(logging.FileHandler("copy_playlists.log"))
+    logging.getLogger("spotify2tidal").addHandler(logging.StreamHandler)
     logging.getLogger("spotify2tidal").setLevel(logging.DEBUG)
 
     st = Spotify2Tidal(
