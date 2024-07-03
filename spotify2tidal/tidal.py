@@ -11,10 +11,6 @@ class Tidal:
 
     Parameters
     ----------
-    username: str
-        Tidal username
-    password: str
-        Tidal password
     """
 
     def __init__(self):
@@ -196,7 +192,7 @@ class Tidal:
         artist: str
             Artist of the album
         """
-        albums = self.tidal_session.search(field="album", value=name).albums
+        albums = self.tidal_session.search(models=[tidalapi.Album], query=name)["albums"]
 
         for a in albums:
             if a.artist.name.lower() == artist.lower():
@@ -210,7 +206,7 @@ class Tidal:
         name: str
             Name of the artist
         """
-        artists = self.tidal_session.search(field="artist", value=name).artists
+        artists = self.tidal_session.search(models=[tidalapi.Artist], query=name)["artists"]
 
         for a in artists:
             if a.name.lower() == name.lower():

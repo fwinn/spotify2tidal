@@ -5,7 +5,7 @@ from spotify2tidal import Spotify2Tidal
 import config
 
 if __name__ == "__main__":
-    """Copy all user playlists from Spotify to Tidal.
+    """Copy selected user playlists from Spotify to Tidal.
 
     This does not include special playlists like 'Discover Weekly'.
 
@@ -24,4 +24,4 @@ if __name__ == "__main__":
         config.spotify_client_redirect_uri,
     )
 
-    st.copy_all_spotify_playlists()
+    st.copy_selected_spotify_playlists()

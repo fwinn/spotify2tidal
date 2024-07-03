@@ -7,10 +7,8 @@ from spotify2tidal.tidal import Tidal
 class Spotify2Tidal:
     """Provide a interface for moving from Spotify to Tidal.
 
-    In order to use it, you need a valid Premium-Subscription for Spotify and an
-    account at Tidal.
-    While Tidal requires just a username and password, Spotify requires some
-    work to register a third-party application to access ones account.
+    In order to use it, you need an account at Tidal and Spotify.
+    Spotify requires some work to register a third-party application to access ones account.
 
     A valid client ID and client secret need to be created and a redirection
     link needs to be whitelisted.
@@ -28,10 +26,6 @@ class Spotify2Tidal:
 
     Parameters
     ----------
-    tidal_username: str
-        Username for the Tidal-account
-    tidal_password: str
-        Password for the Tidal-account
     spotify_username: str
         Username for the Spotfiy-account
     spotify_client_id: str
@@ -60,7 +54,7 @@ class Spotify2Tidal:
         )
         self.tidal = Tidal()
 
-    def copy_elected_spotify_playlists(self):
+    def copy_selected_spotify_playlists(self):
         """Ask for every spotify playlist whether to copy it or not."""
         for playlist in self.spotify.own_playlists:
             answer = input("Copy playlist {} (y)/(n)? ".format(playlist["name"]))
